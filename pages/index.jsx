@@ -10,6 +10,7 @@ import Application from "./components/Application";
 import { MainContext } from "./Context";
 import GetirCategoryData from "../data/getir/Categories.json";
 import GetirCampaginsData from "../data/getir/Campagins.json";
+import WrapperData from "../data/getir/HeroWrapper.json"
 import GetirCardData from "../data/getir/Card.json";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
@@ -24,6 +25,7 @@ export default function Home() {
   const [campaginsComponent, setcampaginsComponent] = useState(<Campaigns />);
   const [questions, setQuestions] = useState();
   const [getirYemekComponent, setgetirYemekComponent] = useState();
+  const [heroWrapperData, setHeroWrapperData] = useState(WrapperData);
 
   const data = {
     categories,
@@ -42,6 +44,8 @@ export default function Home() {
     setQuestions,
     heroData,
     setHeroData,
+    heroWrapperData,
+    setHeroWrapperData,
   };
   return (
     <MainContext.Provider value={data}>

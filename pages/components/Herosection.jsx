@@ -9,10 +9,16 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import ReactFlagsSelect from "react-flags-select";
 import { MainContext, useContext } from "../Context";
+import HeroWrapperui from "./ui/HeroWrapperui";
 const Herosection = () => {
   const { heroData, setHeroData } = useContext(MainContext);
   useEffect(() => {
     setHeroData(heroData);
+  }, []);
+
+  const { heroWrapperData, setHeroWrapperData } = useContext(MainContext);
+  useEffect(() => {
+    setHeroWrapperData(heroWrapperData);
   }, []);
 
   const [selected, setSelected] = useState("TR");
@@ -49,12 +55,10 @@ const Herosection = () => {
       </Swiper>
       <div className="w-full h-full absolute bottom-0 top-0 flex items-center justify-center">
         <div className="w-10/12 h-full flex items-center justify-between">
-          <div className="flex items-start justify-center w-auto h-full z-10 flex-col">
-            <img src="https://getir.com/_next/static/images/bimutluluk-b3a7fcb14fc9a9c09b60d7dc9b1b8fd6.svg" />
-            <p className="text-white font-openSans mt-10 font-semibold text-4xl w-3/4">
-              Dakikalar içinde kapınızda
-            </p>
-          </div>
+          {heroWrapperData &&
+            heroWrapperData.map((value, index) => (
+              <HeroWrapperui key={index} hero={value} />
+            ))}
           <div className="p-6 flex items-end justify-end bg-white w-96 flex-col position-relative z-10 rounded-md">
             <h5 className="text-brand-color text-base font-openSans text-center h-auto w-full mb-4 font-semibold">
               Giriş yap veya kayıt ol

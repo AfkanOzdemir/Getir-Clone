@@ -21,7 +21,12 @@ import GetirHeroData from "../../data/getir/Hero.json";
 import GetirBuyukHeroData from "../../data/getirbuyuk/Hero.json";
 import GetirCarsiHeroData from "../../data/getircarsi/Hero.json";
 import GetirSuHeroData from "../../data/getirsu/Hero.json";
-import GetirYemekData from "../../data/getiryemek/Hero.json"
+import GetirYemekData from "../../data/getiryemek/Hero.json";
+import GetirHeroWrapperData from "../../data/getir/HeroWrapper.json";
+import GetirYemekHeroWrapperData from "../../data/getiryemek/HeroWrapper.json"
+import GetirBuyukHeroWrapperData from "../../data/getirbuyuk/HeroWrapper.json"
+import GetirSuHeroWrapperData from "../../data/getirsu/HeroWrapper.json"
+import GetirCarsiHeroWrapperData from "../../data/getircarsi/HeroWrapper.json"
 
 const Navbar = () => {
   const { categories, setCategories } = useContext(MainContext);
@@ -29,11 +34,16 @@ const Navbar = () => {
   const { card, setCard } = useContext(MainContext);
   const { categoryComponent, setCategoryComponent } = useContext(MainContext);
   const { campaginsComponent, setcampaginsComponent } = useContext(MainContext);
-  const { getirYemekComponent, setgetirYemekComponent } = useContext(MainContext);
+  const { getirYemekComponent, setgetirYemekComponent } =
+    useContext(MainContext);
   const { questions, setQuestions } = useContext(MainContext);
-  const { heroData, setHeroData} = useContext(MainContext);
+  const { heroData, setHeroData } = useContext(MainContext);
+  const { heroWrapperData, setHeroWrapperData } = useContext(MainContext);
   const getir = () => {
-    setHeroData(heroData !== GetirHeroData ? GetirHeroData : GetirHeroData)
+    setHeroWrapperData(
+      heroWrapperData !== GetirHeroWrapperData ? GetirHeroWrapperData : GetirHeroWrapperData
+    );
+    setHeroData(heroData !== GetirHeroData ? GetirHeroData : GetirHeroData);
     setCategoryComponent(
       categoryComponent == "" ? <Categories /> : <Categories />
     );
@@ -48,23 +58,27 @@ const Navbar = () => {
       campagins !== GetirCampaginsData ? GetirCampaginsData : GetirCampaginsData
     );
     setCard(card !== GetirCardData ? GetirCardData : GetirCardData);
-    setQuestions(
-      questions == <Question/> ? "": ""
-    );
+    setQuestions(questions == <Question /> ? "" : "");
   };
   const gyemek = () => {
-    setHeroData(heroData !== GetirYemekData ? GetirYemekData : GetirYemekData)
+    setHeroWrapperData(
+      heroWrapperData !== GetirYemekHeroWrapperData ? GetirYemekHeroWrapperData : GetirYemekHeroWrapperData
+    );
+    setHeroData(heroData !== GetirYemekData ? GetirYemekData : GetirYemekData);
     setCategoryComponent(categoryComponent == <Categories /> ? "" : "");
     setcampaginsComponent(Campaigns == <Campaigns /> ? "" : "");
     setgetirYemekComponent(
       getirYemekComponent == "" ? <CustomSlider /> : <CustomSlider />
     );
-    setQuestions(
-      questions == "" ? <Question/>: <Question/>
-    );
+    setQuestions(questions == "" ? <Question /> : <Question />);
   };
   const gbuyuk = () => {
-    setHeroData(heroData !== GetirBuyukHeroData ? GetirBuyukHeroData : GetirBuyukHeroData)
+    setHeroWrapperData(
+      heroWrapperData !== GetirBuyukHeroWrapperData ? GetirBuyukHeroWrapperData : GetirBuyukHeroWrapperData
+    );
+    setHeroData(
+      heroData !== GetirBuyukHeroData ? GetirBuyukHeroData : GetirBuyukHeroData
+    );
     setCategoryComponent(
       categoryComponent == "" ? <Categories /> : <Categories />
     );
@@ -83,12 +97,15 @@ const Navbar = () => {
     setCard(
       card !== GetirBuyukCardData ? GetirBuyukCardData : GetirBuyukCardData
     );
-    setQuestions(
-      questions == <Question/> ? "": ""
-    );
+    setQuestions(questions == <Question /> ? "" : "");
   };
   const gsu = () => {
-    setHeroData(heroData !== GetirSuHeroData ? GetirSuHeroData : GetirSuHeroData)
+    setHeroWrapperData(
+      heroWrapperData !== GetirSuHeroWrapperData ? GetirSuHeroWrapperData : GetirSuHeroWrapperData
+    );
+    setHeroData(
+      heroData !== GetirSuHeroData ? GetirSuHeroData : GetirSuHeroData
+    );
     setCategoryComponent(categoryComponent == <Categories /> ? "" : "");
     setgetirYemekComponent(getirYemekComponent == <CustomSlider /> ? "" : "");
     setcampaginsComponent(
@@ -100,18 +117,27 @@ const Navbar = () => {
         : GetirSuCampaginsData
     );
     setCard(card !== GetirSuCardData ? GetirSuCardData : GetirSuCardData);
-    setQuestions(
-      questions == <Question/> ? "": ""
-    );
+    setQuestions(questions == <Question /> ? "" : "");
   };
   const gcarsi = () => {
-    setHeroData(heroData !== GetirCarsiHeroData ? GetirCarsiHeroData : GetirCarsiHeroData)
+    setHeroWrapperData(
+      heroWrapperData !== GetirCarsiHeroWrapperData ? GetirCarsiHeroWrapperData : GetirCarsiHeroWrapperData
+    );
+    setHeroData(
+      heroData !== GetirCarsiHeroData ? GetirCarsiHeroData : GetirCarsiHeroData
+    );
     setcampaginsComponent(Campaigns == <Campaigns /> ? "" : "");
     setgetirYemekComponent(getirYemekComponent == <CustomSlider /> ? "" : "");
-    setCategoryComponent(categoryComponent == "" ? <Categories /> : <Categories />);
-    setCategories(categories !== CarsiCategoryData ? CarsiCategoryData : CarsiCategoryData);
-    setCard(card !== GetirCarsiCardData ? GetirCarsiCardData : GetirCarsiCardData);
-    setQuestions(questions == "" ? <Question/>: <Question/>);
+    setCategoryComponent(
+      categoryComponent == "" ? <Categories /> : <Categories />
+    );
+    setCategories(
+      categories !== CarsiCategoryData ? CarsiCategoryData : CarsiCategoryData
+    );
+    setCard(
+      card !== GetirCarsiCardData ? GetirCarsiCardData : GetirCarsiCardData
+    );
+    setQuestions(questions == "" ? <Question /> : <Question />);
   };
   return (
     <div className="navbar-container w-full h-11 bg-brand-color pl-11 pr-11 flex items-center justify-center">
